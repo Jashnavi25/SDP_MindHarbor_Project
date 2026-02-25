@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2 class="text-center mb-4">Counselor Dashboard</h2>
+
+  <!-- Counseling Sessions -->
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      <h5 class="text-primary mb-0">My Counseling Sessions</h5>
+      <a href="/add-session/" class="btn btn-sm btn-success">Add Session</a>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead><tr><th>Student</th><th>Time</th><th>Notes</th><th>Actions</th></tr></thead>
+        <tbody>
+          {% for session in sessions %}
+            <tr>
+              <td>{{ session.student }}</td>
+              <td>{{ session.scheduled_time }}</td>
+              <td>{{ session.notes }}</td>
+              <td><a href="/edit-session/{{ session.id }}/" class="btn btn-sm btn-primary">Edit</a></td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="4" class="text-center">No sessions scheduled</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Anonymous Support -->
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      <h5 class="text-primary mb-0">Anonymous Support Messages</h5>
+    </div>
+    <div class="card-body">
+      <ul>
+        {% for support in supports %}
+          <li><strong>Message:</strong> {{ support.message }} <br>
+              <strong>Response:</strong> {{ support.response }}
+              <a href="/edit-support/{{ support.id }}/" class="btn btn-sm btn-primary">Respond</a>
+          </li>
+        {% empty %}
+          <p>No support messages yet</p>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

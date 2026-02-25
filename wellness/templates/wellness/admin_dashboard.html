@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2 class="text-center mb-4">Admin Dashboard</h2>
+
+  <!-- Wellness Resources -->
+  <div class="card shadow mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="text-primary mb-0">Wellness Resources</h5>
+      <a href="/add-resource/" class="btn btn-sm btn-success">Add Resource</a>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Link</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for resource in resources %}
+          <tr>
+            <td>{{ resource.title }}</td>
+            <td>{{ resource.description }}</td>
+            <td><a href="{{ resource.link }}" target="_blank" class="btn btn-link">View</a></td>
+            <td>
+              <a href="/edit-resource/{{ resource.id }}/" class="btn btn-sm btn-primary">Edit</a>
+              <a href="/delete-resource/{{ resource.id }}/" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="4" class="text-center">No resources available</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Counseling Sessions -->
+  <div class="card shadow mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="text-primary mb-0">Counseling Sessions</h5>
+      <a href="/add-session/" class="btn btn-sm btn-success">Add Session</a>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Counselor</th>
+            <th>Time</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for session in sessions %}
+          <tr>
+            <td>{{ session.student }}</td>
+            <td>{{ session.counselor }}</td>
+            <td>{{ session.scheduled_time }}</td>
+            <td>{{ session.notes }}</td>
+            <td>
+              <a href="/edit-session/{{ session.id }}/" class="btn btn-sm btn-primary">Edit</a>
+              <a href="/delete-session/{{ session.id }}/" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="5" class="text-center">No sessions scheduled</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Anonymous Support -->
+  <div class="card shadow mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5 class="text-primary mb-0">Anonymous Support</h5>
+      <a href="/add-support/" class="btn btn-sm btn-success">Add Support</a>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Message</th>
+            <th>Response</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for support in supports %}
+          <tr>
+            <td>{{ support.message }}</td>
+            <td>{{ support.response }}</td>
+            <td>
+              <a href="/edit-support/{{ support.id }}/" class="btn btn-sm btn-primary">Edit</a>
+              <a href="/delete-support/{{ support.id }}/" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="3" class="text-center">No support messages</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
