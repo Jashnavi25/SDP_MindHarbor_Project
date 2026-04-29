@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2 class="text-primary mb-4">Anonymous Support</h2>
+  <ul class="list-group">
+    {% for support in supports %}
+      <li class="list-group-item">
+        <strong>Message:</strong> {{ support.message }}<br>
+        <strong>Response:</strong> {{ support.response }}
+      </li>
+    {% empty %}
+      <li class="list-group-item text-center">No support messages yet</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+     background: linear-gradient(to right, #e3f2fd, #f8f9fa);
+}
+
+.sidebar {
+    width: 220px;
+    min-height: 100vh;
+    border-right: 1px solid #ddd;
+}
+
+.sidebarline {
+    border-right: 10px solid transparent;   /* width of the line */
+    border-image: linear-gradient(to right, #0d6efd, transparent) 1;
+    border-image-slice: 1;                  /* ensures gradient is applied */
+}
+
+.sidebar h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+header .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
