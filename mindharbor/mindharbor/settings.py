@@ -76,9 +76,12 @@ WSGI_APPLICATION = 'mindharbor.wsgi.application'
 
 DATABASES = {
     'default': {
-        'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3'
-    )
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mindharbor_db',       # the database you created
+        'USER': 'postgres',            # or your custom user
+        'PASSWORD': '12345',           # the password you set
+        'HOST': 'localhost',           # or server IP if remote
+        'PORT': '5432',
     }
 }
 
